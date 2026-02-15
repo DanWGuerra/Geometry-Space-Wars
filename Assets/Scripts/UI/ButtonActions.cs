@@ -37,6 +37,16 @@ public class ButtonActions : MonoBehaviour
         });
     }
 
+    public void GoToMainMenu()
+    {
+        PlayClickSound();
+
+        fade.FadeToBlack(() =>
+        {
+            SceneManager.LoadScene("Menu");
+        });
+    }
+
     private void PlayClickSound()
     {
         if (clickSfx != null)
