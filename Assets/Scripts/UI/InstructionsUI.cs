@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonActions : MonoBehaviour
+public class InstructionsUI : MonoBehaviour
 {
-    [SerializeField] private UIFadeTransition fade;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject InstructionsPanel;
 
-    
     [SerializeField] private AudioClip clickSfx;
     [SerializeField] private float clickVolume = 1f;
 
@@ -17,36 +17,19 @@ public class ButtonActions : MonoBehaviour
         audioSource.playOnAwake = false;
     }
 
-    public void StartGame()
+
+
+    public void BackMainMenuButton()
     {
         PlayClickSound();
-
-        fade.FadeToBlack(() =>
-        {
-            SceneManager.LoadScene("Game");
-        });
+        animator.Play("Back");
+        Invoke("DeactivatePanel", 1);
     }
 
-    public void QuitGame()
+    private void DeactivatePanel()
     {
-        PlayClickSound();
-
-        fade.FadeToBlack(() =>
-        {
-            Application.Quit();
-        });
+        InstructionsPanel.SetActive(false);
     }
-
-    public void GoToMainMenu()
-    {
-        PlayClickSound();
-
-        fade.FadeToBlack(() =>
-        {
-            SceneManager.LoadScene("Menu");
-        });
-    }
-
 
     private void PlayClickSound()
     {
