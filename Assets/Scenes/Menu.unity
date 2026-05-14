@@ -860,8 +860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303155b9d94e45944b4bd9e5ccf2ec0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InstructionsUI
-  animator: {fileID: 0}
-  clickSfx: {fileID: 0}
+  animator: {fileID: 1593289033}
+  InstructionsPanel: {fileID: 1593289031}
+  clickSfx: {fileID: 8300000, guid: a4a8dcf33015cbc41b07e577e95e3882, type: 3}
   clickVolume: 1
 --- !u!1 &740084849
 GameObject:
@@ -1591,7 +1592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1207023720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3155,7 +3156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.8346, y: 249}
+  m_AnchoredPosition: {x: 5.8346, y: 165}
   m_SizeDelta: {x: 200, y: 101.774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748584889
@@ -3335,6 +3336,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -3450,21 +3452,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1593289033}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Back
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1713846411}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 654465072}
+        m_TargetAssemblyTypeName: InstructionsUI, Assembly-CSharp
+        m_MethodName: BackMainMenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4014,7 +4004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 128}
+  m_AnchoredPosition: {x: 5, y: 44}
   m_SizeDelta: {x: 544.545, y: 101.774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051493208
