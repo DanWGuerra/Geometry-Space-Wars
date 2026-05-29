@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(HeatSystem))]
@@ -11,6 +12,22 @@ public class PlayerController : MonoBehaviour
     private IPlayerState currentState;
     private IPlayerState normalState;
     private IPlayerState overheatedState;
+
+    [SerializeField] private InputAction moveAction;
+    [SerializeField] private InputAction ShootAction;
+
+    private void OnEnable()
+    {
+        moveAction.Enable();
+        ShootAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+        ShootAction.Disable();
+    }
+
 
     private void Awake()
     {
@@ -49,9 +66,14 @@ public class PlayerController : MonoBehaviour
 
     public void HandleMovement()
     {
+        Vector2 movementInput = moveAction.ReadValue<Vector2>();
+
+        
+       
+
         Vector2 input = new Vector2(
-            Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical")
+            movementInput.x,
+            0
         );
 
         movement.Move(input);
@@ -59,8 +81,8 @@ public class PlayerController : MonoBehaviour
 
     public void HandleShooting()
     {
-        if (!Input.GetButton("Fire1")) return;
-        if (heatSystem.IsOverheated)
+        if (!ShootAction.IsPressed()) { return; }
+            if (heatSystem.IsOverheated)
             return;
 
         weapon.Fire();
