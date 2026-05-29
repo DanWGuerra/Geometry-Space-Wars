@@ -81,11 +81,15 @@ public class PlayerController : MonoBehaviour
 
     public void HandleShooting()
     {
-        if (!ShootAction.IsPressed()) { return; }
-            if (heatSystem.IsOverheated)
+        if (!ShootAction.IsPressed())
             return;
 
-        weapon.Fire();
-        heatSystem.AddHeat();
+        if (heatSystem.IsOverheated)
+            return;
+
+        if (weapon.Fire())
+        {
+            heatSystem.AddHeat();
+        }
     }
 }

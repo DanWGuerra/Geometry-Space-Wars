@@ -3517,8 +3517,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeatSystem
   maxHeat: 100
-  heatPerShot: 1.5
-  cooldownRate: 30
+  heatPerShot: 10
+  cooldownRate: 20
 --- !u!114 &1644210759
 MonoBehaviour:
   m_ObjectHideFlags: 0

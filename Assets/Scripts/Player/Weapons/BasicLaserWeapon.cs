@@ -9,17 +9,24 @@ public class BasicLaserWeapon : MonoBehaviour, IWeapon
     private float fireCooldown;
 
     [SerializeField] private AudioClip shootSfx;
-    public void Fire()
+    public bool Fire()
     {
         if (fireCooldown > 0f)
         {
             fireCooldown -= Time.deltaTime;
-            return;
+            return false;
         }
+          
 
-        Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        PlayShootSound();
+        Instantiate(
+            bulletPrefab,
+            firePoint.position,
+            firePoint.rotation
+        );
+
         fireCooldown = fireRate;
+
+        return true;
     }
 
     private void PlayShootSound()
