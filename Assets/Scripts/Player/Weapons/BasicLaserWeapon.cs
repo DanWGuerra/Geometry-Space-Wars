@@ -24,6 +24,7 @@ public class BasicLaserWeapon : MonoBehaviour, IWeapon
             firePoint.rotation
         );
 
+        PlayShootSound();
         fireCooldown = fireRate;
 
         return true;
