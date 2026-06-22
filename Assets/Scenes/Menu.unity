@@ -2721,7 +2721,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use W, A, S, D to move freely and dodge enemies.
+  m_text: Use A & D To move left and right and avoid enemies.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b026b470876ac5944a850138e8f70158, type: 2}
   m_sharedMaterial: {fileID: -6642791971645086546, guid: b026b470876ac5944a850138e8f70158, type: 2}
@@ -4061,7 +4061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1593289032
 RectTransform:
   m_ObjectHideFlags: 0
