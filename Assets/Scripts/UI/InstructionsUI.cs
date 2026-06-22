@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class InstructionsUI : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+     private Animator animator;
     [SerializeField] private GameObject InstructionsPanel;
 
     [SerializeField] private AudioClip clickSfx;
@@ -15,6 +15,7 @@ public class InstructionsUI : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
+        animator = InstructionsPanel.GetComponent<Animator>();
     }
 
 

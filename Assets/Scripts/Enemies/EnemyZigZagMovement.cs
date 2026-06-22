@@ -33,22 +33,28 @@ public class EnemyZigZagMovement : MonoBehaviour
 
     private void MoveZigZag()
     {
-        Vector3 toTarget = (target.Target.position - transform.position).normalized;
+        Vector3 toPlayer =
+            (target.Target.position - transform.position).normalized;
 
-        Vector3 perpendicular = new Vector3(-toTarget.y, toTarget.x, 0f);
-        float zigZag = Mathf.Sin((Time.time + timeOffset) * zigZagFrequency);
+        Vector3 perpendicular =
+            new Vector3(-toPlayer.y, toPlayer.x, 0f);
 
-        Vector3 movement =
-            toTarget * moveSpeed +
+        float zigZag =
+            Mathf.Sin((Time.time + timeOffset) * zigZagFrequency);
+
+        Vector3 forwardMovement =
+            toPlayer * moveSpeed;
+
+        Vector3 sidewaysMovement =
             perpendicular * zigZag * zigZagAmplitude;
 
-        Vector3 newPosition = transform.position + movement * Time.deltaTime;
+        Vector3 movement =
+            forwardMovement + sidewaysMovement;
 
-        newPosition = ClampToBounds(newPosition);
+        transform.position += movement * Time.deltaTime;
 
-        transform.position = newPosition;
+        transform.position = ClampToBounds(transform.position);
     }
-
     private Vector3 ClampToBounds(Vector3 position)
     {
         Bounds bounds = screenBounds.bounds;
