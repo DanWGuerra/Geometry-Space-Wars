@@ -9,7 +9,7 @@ public class GameOverLeaderboardUI : MonoBehaviour
     [SerializeField] private SurvivalTime timer;
 
     [Header("UI")]
-    [SerializeField] private GameObject nameInputPanel;
+    [SerializeField] private GameObject nameInputPanel, ButtonsPanel;
     [SerializeField] private TMP_InputField nameInput;
 
     private float finalTime;
@@ -20,21 +20,27 @@ public class GameOverLeaderboardUI : MonoBehaviour
 
     private AudioSource audioSource;
 
-    private void OnEnable()
+
+    private void Awake()
     {
         finalTime = timer.ElapsedTime;
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
 
         if (leaderboard.Qualifies(finalTime))
         {
             awaitingSubmission = true;
+            
             nameInputPanel.SetActive(true);
+            ButtonsPanel.SetActive(false);
             nameInput.text = "";
             nameInput.ActivateInputField();
         }
         else
         {
             awaitingSubmission = false;
-            nameInputPanel.SetActive(false);
+            
+            
         }
     }
 
@@ -46,7 +52,7 @@ public class GameOverLeaderboardUI : MonoBehaviour
         awaitingSubmission = false;
 
         string playerName = string.IsNullOrWhiteSpace(nameInput.text)
-            ? "AAA"
+            ? "AAAAA"
             : nameInput.text.Trim();
 
         leaderboard.AddEntry(playerName, finalTime);
