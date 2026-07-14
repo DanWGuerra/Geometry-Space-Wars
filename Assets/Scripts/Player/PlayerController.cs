@@ -68,9 +68,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 movementInput = moveAction.ReadValue<Vector2>();
 
-        
-       
-
         Vector2 input = new Vector2(
             movementInput.x,
             0
