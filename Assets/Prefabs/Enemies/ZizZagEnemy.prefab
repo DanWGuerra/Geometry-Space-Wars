@@ -265,6 +265,8 @@ MonoBehaviour:
   moveSpeed: 3
   zigZagAmplitude: 15
   zigZagFrequency: 3
+  directChaseYThreshold: -14
+  rotationOffset: 0
 --- !u!60 &3398495733529737186
 PolygonCollider2D:
   m_ObjectHideFlags: 0
