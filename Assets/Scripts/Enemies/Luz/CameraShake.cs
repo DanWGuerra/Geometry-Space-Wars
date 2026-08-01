@@ -15,7 +15,7 @@ public class CameraShake : MonoBehaviour
         if (health != null)
             health.OnDeath += Shaking;
     }
-    private void OnDesable()
+    private void OnDisable()
     {
         if (health != null)
             health.OnDeath -= Shaking;
