@@ -56,15 +56,23 @@ public class EnemySpawner : MonoBehaviour
         if (enemyPrefabs.Count == 0)
             return;
 
-        GameObject enemyPrefab = GetRandomEnemy();
-        Vector2 spawnPosition = GetRandomTopPosition();
+        GameObject enemyObject = Instantiate(
+        GetRandomEnemy(),
+        GetRandomTopPosition(),
+        Quaternion.identity);
 
-        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        //if it is a snake
+        SnakeEnemy snake = enemyObject.GetComponent<SnakeEnemy>();
+
+        if (snake != null)
+        {
+            snake.BuildSnake(snake.bodyCount);
+        }
     }
 
     private GameObject GetRandomEnemy()
     {
-        int index = Random.Range(0, enemyPrefabs.Count);
+        int index = 3;//Random.Range(0, enemyPrefabs.Count);
         return enemyPrefabs[index];
     }
 
