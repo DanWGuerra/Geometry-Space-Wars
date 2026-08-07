@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,11 +35,10 @@ public class SnakeEnemy : MonoBehaviour
     public SnakeEnemy snakePrefab;
     public int bodyCount = 6;
 
-
+    private int horizontalDirection = 1;
 
     void Start()
     {
-       
         startPosition = head.position;
     }
 
@@ -46,6 +46,13 @@ public class SnakeEnemy : MonoBehaviour
     {
 
         segments.RemoveAll(s => s == null);
+        // If there are no body segments left, destroy the snake
+        if (segments.Count == 0)
+        {
+            DestroyWholeSnake();
+            return;
+        }
+
         // Move head
         travel += waveSpeed * Time.deltaTime;
 
@@ -56,7 +63,9 @@ public class SnakeEnemy : MonoBehaviour
         pos = startPosition;
 
         // Large horizontal weaving
-        pos.x += Mathf.Sin(travel * horizontalFrequency) * horizontalAmplitude;
+        pos.x += Mathf.Sin(travel * horizontalFrequency) *
+         horizontalAmplitude *
+         horizontalDirection;
 
         // Small vertical wobble
         pos.y += Mathf.Sin(travel * verticalWaveFrequency) * verticalWaveAmplitude;
@@ -132,38 +141,56 @@ public class SnakeEnemy : MonoBehaviour
         if (index < 0)
             return;
 
-        // Number of segments that will belong to the new snake
-        int newSnakeSize = segments.Count - index - 1;
+        Vector3 spawnPosition =
+            hitSegment.position +
+            Vector3.down * segmentSpacing * 1.5f;
 
-        // Destroy every segment after the hit one
-        for (int i = segments.Count - 1; i > index; i--)
+        // Destroy the hit segment
+        Destroy(hitSegment.gameObject);
+        segments.RemoveAt(index);
+
+        // Destroy every segment after it
+        bool spawnNewSnake = false;
+
+        while (segments.Count > index)
         {
-            Destroy(segments[i].gameObject);
-            segments.RemoveAt(i);
+            spawnNewSnake = true;
+
+            Destroy(segments[index].gameObject);
+            segments.RemoveAt(index);
         }
 
-        // Remove the hit segment
-        segments.RemoveAt(index);
-        Destroy(hitSegment.gameObject);
-
-        // Rebuild the original snake's history
         InitializeHistory();
-
-        // Nothing left to create?
-        if (newSnakeSize <= 0)
+        if (segments.Count == 0)
+        {
+            DestroyWholeSnake();
             return;
+        }
 
-        // Spawn the new snake
-        SnakeEnemy clone = Instantiate(
-            snakePrefab,
-            hitSegment.position,
-            Quaternion.identity);
+        // Spawn a brand new 2-segment snake
+        if (spawnNewSnake)
+        {
+            SnakeEnemy clone = Instantiate(
+                snakePrefab,
+                spawnPosition,
+                Quaternion.identity);
 
-        clone.BuildSnake(newSnakeSize);
+            clone.BuildSnake(2);
 
-        clone.startPosition = hitSegment.position;
-        clone.travel = travel;
+            clone.startPosition = spawnPosition;
+            clone.travel = travel;
+
+            // Move in the opposite horizontal direction
+            clone.horizontalDirection = -horizontalDirection;
+
+            int originalDir = horizontalDirection;
+
+            horizontalDirection = originalDir;
+            clone.horizontalDirection = -originalDir;
+        }
     }
+
+
 
     public void InitializeHistory()
     {
@@ -201,8 +228,6 @@ public class SnakeEnemy : MonoBehaviour
         }
     }
 
-
-
     public void BuildSnake(int size)
     {
         bodyCount = size;
@@ -215,12 +240,46 @@ public class SnakeEnemy : MonoBehaviour
 
             body.position = head.position;
             body.rotation = head.rotation;
-
-            segments.Add(body);
+            body.gameObject.SetActive(false);
 
             SnakeSegment segment = body.GetComponent<SnakeSegment>();
             segment.owner = this;
-            segment.isHead = false;
+
+            segments.Add(body);
+        }
+
+        StartCoroutine(SpawnAnimation());
+    }
+
+
+    IEnumerator SpawnAnimation()
+    {
+        history.Clear();
+
+        history.Add(head.position);
+
+        Vector3 previous = head.position;
+
+        foreach (Transform segment in segments)
+        {
+            segment.gameObject.SetActive(true);
+
+            Vector3 target =
+                previous + Vector3.up * segmentSpacing;
+
+            float t = 0;
+
+            while (t < 1f)
+            {
+                t += Time.deltaTime * 12f;
+
+                segment.position =
+                    Vector3.Lerp(previous, target, t);
+
+                yield return null;
+            }
+
+            previous = target;
         }
 
         InitializeHistory();
