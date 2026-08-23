@@ -24,9 +24,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             Die();
     }
 
-    private void Die()
+    public void Die()
     {
         OnDeath?.Invoke();
         Destroy(gameObject);
     }
+
+
 }
