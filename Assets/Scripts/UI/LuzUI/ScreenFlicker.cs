@@ -8,7 +8,8 @@ public class ScreenFlicker : MonoBehaviour
     [SerializeField] private HeatSystem HeatSystem;
     [SerializeField] private Animator Animator;
     [SerializeField] private GameObject WarningUI;
-    
+    [SerializeField] private AudioSource warningSound;
+
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class ScreenFlicker : MonoBehaviour
         {
             Animator.gameObject.SetActive(true);
             Animator.SetBool("Blink", true);
+            warningSound.Play();
         }
         StartCoroutine(FlickerRoutine());
 
@@ -70,6 +72,7 @@ public class ScreenFlicker : MonoBehaviour
         yield return new WaitForSeconds(4.8f);
 
         Animator.SetBool("Blink", false);
+        warningSound.Stop();
     }
     
 
