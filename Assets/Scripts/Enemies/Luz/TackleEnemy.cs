@@ -30,7 +30,7 @@ public class TackleEnemy : MonoBehaviour
         if(Timer >= 2 && playerScript != null)
         {
            
-            transform.Translate(playerPos.position * ImpulseForce * Time.deltaTime);
+            transform.Translate(playerPos.position.normalized * ImpulseForce * Time.deltaTime);
         }
         //transform.Translate(Vector3.down * ImpulseForce * Time.deltaTime);
     }

@@ -3426,6 +3426,7 @@ MonoBehaviour:
   leaderboard: {fileID: 756869539}
   timer: {fileID: 817245634}
   nameInputPanel: {fileID: 1668869940}
+  ButtonsPanel: {fileID: 0}
   nameInput: {fileID: 1083803860}
   clickSfx: {fileID: 0}
   clickVolume: 1

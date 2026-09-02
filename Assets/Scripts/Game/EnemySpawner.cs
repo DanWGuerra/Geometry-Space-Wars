@@ -88,7 +88,7 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject GetRandomEnemy()
     {
-        int index = 3;//Random.Range(0, enemyPrefabs.Count);
+        int index = Random.Range(0, enemyPrefabs.Count);
         return enemyPrefabs[index];
     }
 
