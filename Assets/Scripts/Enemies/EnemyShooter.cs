@@ -6,7 +6,7 @@ public class EnemyShooter : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float shootInterval = 1.5f;
-    [SerializeField] private float bulletSpeed = 6f;
+    [SerializeField] private float speed = 6f;
 
     [Header("Optional")]
     [SerializeField] private Transform firePoint;

@@ -4234,7 +4234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1218368069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5088,6 +5088,7 @@ MonoBehaviour:
   - {fileID: 374090775318044397, guid: 8f61879290f20304baa6d1e58bfdfe80, type: 3}
   - {fileID: 1272861157445929402, guid: f777d3c84e5a7bd4a9151e16a4991c7f, type: 3}
   - {fileID: 4543518262989765994, guid: 4b7b0c7c1034fca4b977c5d5c35f04c0, type: 3}
+  - {fileID: 3388941335466509193, guid: 41644e1afd57fbb4394c937dbf380db6, type: 3}
   spawnInterval: 4
   minimumSpawnInterval: 1
   spawnAcceleration: 0.05
@@ -5230,6 +5231,7 @@ MonoBehaviour:
   leaderboard: {fileID: 756869539}
   timer: {fileID: 817245634}
   nameInputPanel: {fileID: 1668869940}
+  ButtonsPanel: {fileID: 0}
   nameInput: {fileID: 1083803860}
   clickSfx: {fileID: 0}
   clickVolume: 1
@@ -7038,6 +7040,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 44613162}
   - {fileID: 1026399081}
+  - {fileID: 499446652}
   - {fileID: 982158884}
   - {fileID: 1379496679}
   - {fileID: 1644210753}
@@ -7048,7 +7051,6 @@ SceneRoots:
   - {fileID: 132946795}
   - {fileID: 1304799312}
   - {fileID: 756869540}
-  - {fileID: 499446652}
   - {fileID: 239536344}
   - {fileID: 531348139}
   - {fileID: 1218368072}

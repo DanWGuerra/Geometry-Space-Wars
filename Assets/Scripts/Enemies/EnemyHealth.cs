@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class EnemyHealth : MonoBehaviour, IDamageable
+public class EnemyHealth : MonoBehaviour, IDamageable //Used on Bullet to see if it can be damaged
 {
     [SerializeField] private int maxHealth = 3;
 
