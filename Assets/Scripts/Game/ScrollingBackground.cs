@@ -6,11 +6,11 @@ public class ScrollingBackground : MonoBehaviour
     [SerializeField] private GameObject Background1, Background2;
     [SerializeField] private float scrollSpeed = 10f;
     [SerializeField] private Vector2 SpawnPosition;
-    private Camera camera;
+    private Camera mainCamera;
 
     private void Start()
     {
-        camera = Camera.main;
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class ScrollingBackground : MonoBehaviour
 
     private bool IsOutOfBounds(GameObject Background)
     {
-        Vector2 viewportPos = camera.WorldToViewportPoint(Background.transform.position);
+        Vector2 viewportPos = mainCamera.WorldToViewportPoint(Background.transform.position);
 
         // Check if the object position is outside the 0-1 range
         return viewportPos.y < -0.5f;
