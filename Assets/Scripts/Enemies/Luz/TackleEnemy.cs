@@ -8,7 +8,7 @@ public class TackleEnemy : MonoBehaviour
     [SerializeField] private float Timer;
     [SerializeField] private Transform playerPos;
     [SerializeField] private AudioSource AhShoot;
-    
+    private Vector2 follow;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,11 +26,16 @@ public class TackleEnemy : MonoBehaviour
             playerPos = playerScript.transform;
         }
 
+        
         Timer += Time.deltaTime;
+        if(Timer < 2)
+        {
+            follow = (playerPos.position - transform.position).normalized;
+        }
         if(Timer >= 2 && playerScript != null)
         {
            
-            transform.Translate(playerPos.position.normalized * ImpulseForce * Time.deltaTime);
+            transform.Translate(follow * ImpulseForce * Time.deltaTime);
         }
         //transform.Translate(Vector3.down * ImpulseForce * Time.deltaTime);
     }

@@ -326,7 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
   bulletPrefab: {fileID: 3715552701851007042, guid: 69a604d8105fcf7439575298e0332a17, type: 3}
   shootInterval: 1.5
-  bulletSpeed: 6
+  speed: 6
   firePoint: {fileID: 8454946841825072086}
   shootSfx: {fileID: 8300000, guid: 6e1bcbc6a88bb694d8964fdc5c268adf, type: 3}
   shootVolume: 1
@@ -422,7 +422,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_ImpulseDuration: 0.3
+    m_ImpulseDuration: 1
     m_ImpulseType: 0
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 0}
