@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee06491f395bbc41af9578d76ec8fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TackleEnemy
-  ImpulseForce: 1.5
+  ImpulseForce: 25
   Timer: 0
   playerPos: {fileID: 0}
   AhShoot: {fileID: -7927608153484882033}

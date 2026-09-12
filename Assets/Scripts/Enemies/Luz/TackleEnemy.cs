@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class TackleEnemy : MonoBehaviour
     [SerializeField] private float Timer;
     [SerializeField] private Transform playerPos;
     [SerializeField] private AudioSource AhShoot;
+    private Vector3 follow;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,10 +29,13 @@ public class TackleEnemy : MonoBehaviour
         }
 
         Timer += Time.deltaTime;
+        if(Timer < 2)
+        {
+            follow = (playerPos.position - transform.position).normalized;
+        }
         if(Timer >= 2 && playerScript != null)
         {
-           
-            transform.Translate(playerPos.position * ImpulseForce * Time.deltaTime);
+            transform.Translate(follow * ImpulseForce * Time.deltaTime, Space.World);
         }
         //transform.Translate(Vector3.down * ImpulseForce * Time.deltaTime);
     }
