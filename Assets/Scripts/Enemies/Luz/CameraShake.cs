@@ -22,7 +22,7 @@ public class CameraShake : MonoBehaviour
     }
     private void Shaking()
     {
-        ImpulseSource.GenerateImpulse();
+         ImpulseSource.GenerateImpulse();
     }
     
 }
