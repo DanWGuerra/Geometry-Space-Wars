@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Apamate.BulletHellSystem.WeirdBullet
   maxLife: 20
-  canBeDestroyed: 1
+  canBeDestroyed: 0
   spriteRenderer: {fileID: 5320089617986572226}
   destroyableColor: {r: 0.85098046, g: 0, b: 0, a: 1}
-  indestructibleColor: {r: 0.47374135, g: 1, b: 0, a: 1}
+  indestructibleColor: {r: 1, g: 0.9545093, b: 0, a: 1}
