@@ -5296,15 +5296,15 @@ RectTransform:
   - {fileID: 2122120508}
   - {fileID: 1767316317}
   - {fileID: 1207023720}
-  - {fileID: 1297157089}
-  - {fileID: 1593289032}
   - {fileID: 605581936}
-  - {fileID: 2057650401}
   - {fileID: 861719162}
   - {fileID: 1991883403}
   - {fileID: 1355754795}
   - {fileID: 1045324902}
   - {fileID: 1498648187}
+  - {fileID: 1297157089}
+  - {fileID: 1593289032}
+  - {fileID: 2057650401}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
