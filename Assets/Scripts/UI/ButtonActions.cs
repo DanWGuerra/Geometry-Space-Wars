@@ -19,14 +19,8 @@ public class ButtonActions : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("StartGame() called");
+       
         PlayClickSound();
-
-        if (fade == null)
-        {
-            Debug.LogError("Fade reference is NULL on this ButtonActions component!");
-            return;
-        }
 
         fade.FadeToBlack(() =>
         {
@@ -47,11 +41,12 @@ public class ButtonActions : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        Debug.Log("GoToMainMenu() called");
         PlayClickSound();
 
         fade.FadeToBlack(() =>
         {
-            Time.timeScale = 1f;
+            Debug.Log("Fade complete, loading Menu scene now, isFading = " + fade.isFading);
             SceneManager.LoadScene("Menu");
         });
     }
