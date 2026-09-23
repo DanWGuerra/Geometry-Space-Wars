@@ -1619,7 +1619,6 @@ GameObject:
   - component: {fileID: 452297214}
   - component: {fileID: 452297213}
   - component: {fileID: 452297212}
-  - component: {fileID: 452297211}
   m_Layer: 5
   m_Name: CanvasPause
   m_TagString: Untagged
@@ -1627,25 +1626,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &452297211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452297210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e69f12e12c22642ab48e7779d06144, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameOverLeaderboardUI
-  leaderboard: {fileID: 756869539}
-  timer: {fileID: 817245634}
-  nameInputPanel: {fileID: 0}
-  ButtonsPanel: {fileID: 766143604}
-  nameInput: {fileID: 0}
-  clickSfx: {fileID: 8300000, guid: a4a8dcf33015cbc41b07e577e95e3882, type: 3}
-  clickVolume: 1
 --- !u!114 &452297212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,7 +1729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &483130688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3735,6 +3715,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 452297210}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &990325222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3838,6 +3830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIFadeTransition
   fadeImage: {fileID: 483130688}
   fadeDuration: 1
+  isFading: 0
 --- !u!114 &1007584985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3852,7 +3845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonActions
   fade: {fileID: 1007584984}
   clickSfx: {fileID: 8300000, guid: a4a8dcf33015cbc41b07e577e95e3882, type: 3}
-  clickVolume: 1.2
+  clickVolume: 0.5
 --- !u!1 &1018233691
 GameObject:
   m_ObjectHideFlags: 0
@@ -7040,10 +7033,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1007584985}
-        m_TargetAssemblyTypeName: ButtonActions, Assembly-CSharp
-        m_MethodName: GoToMainMenu
-        m_Mode: 1
+      - m_Target: {fileID: 452297210}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 452297210}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7644,7 +7649,6 @@ SceneRoots:
   - {fileID: 1379496679}
   - {fileID: 1644210753}
   - {fileID: 888408864}
-  - {fileID: 1881279312}
   - {fileID: 1502278421}
   - {fileID: 452297215}
   - {fileID: 1007584983}
@@ -7656,3 +7660,4 @@ SceneRoots:
   - {fileID: 1154014222}
   - {fileID: 2102709702}
   - {fileID: 1699050531}
+  - {fileID: 1881279312}

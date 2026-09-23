@@ -1228,6 +1228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIFadeTransition
   fadeImage: {fileID: 605581937}
   fadeDuration: 1.2
+  isFading: 0
 --- !u!114 &654465070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5027,7 +5028,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a4a8dcf33015cbc41b07e577e95e3882, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

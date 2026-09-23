@@ -8,7 +8,7 @@ public class UIFadeTransition : MonoBehaviour
     [SerializeField] private Image fadeImage;
     [SerializeField] private float fadeDuration = 0.5f;
 
-    bool isFading = false;
+    public bool isFading = false;
 
     void Start()
     {
@@ -17,8 +17,10 @@ public class UIFadeTransition : MonoBehaviour
 
     public void FadeToBlack(System.Action onComplete = null)
     {
+        Debug.Log("FadeToBlack called, isFading = " + isFading + ", gameObject active = " + gameObject.activeInHierarchy);
         if (!isFading)
             StartCoroutine(FadeRoutine(1f, onComplete));
+        Debug.Log("Executing");
     }
 
     public void FadeFromBlack()
@@ -36,7 +38,7 @@ public class UIFadeTransition : MonoBehaviour
 
         while (time < fadeDuration)
         {
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             float alpha = Mathf.Lerp(startAlpha, targetAlpha, time / fadeDuration);
             fadeImage.color = new Color(0, 0, 0, alpha);
             yield return null;
@@ -46,5 +48,12 @@ public class UIFadeTransition : MonoBehaviour
         isFading = false;
 
         onComplete?.Invoke();
+    }
+
+    void OnDisable()
+    {
+        // Safety net: if this object gets disabled mid-fade, don't leave isFading stuck
+        isFading = false;
+        StopAllCoroutines();
     }
 }
